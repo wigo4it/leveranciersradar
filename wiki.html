@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="wiki.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const wikiKey = params.get('page');
+            if (wikiKey) {
+                const markdownFile = `wiki/${wikiKey}.md`; // Append .md to the wikiKey
+
+                fetch(markdownFile)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
+                    .then(markdown => {
+                        // Extract the first line of the markdown file
+                        const firstLine = markdown.split('\n')[0];
+                        // Remove '#' and the space, then set as the document's title
+                        const pageTitle = firstLine.replace('# ', '');
+                        document.title = pageTitle;
+
+                        // Parse the markdown to HTML and display it
+                        const htmlContent = marked.parse(markdown);
+                        document.getElementById('wiki-container').innerHTML = htmlContent;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching the markdown file:', error);
+                    });
+            } else {
+                document.getElementById('wiki-container').innerHTML = 'No wiki entry specified.';
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wiki-container"></div>
+</body>
+
+</html>

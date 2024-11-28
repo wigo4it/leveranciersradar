@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+:root {
+  --kleur-achtergrond: #43133d;
+  --kleur-tekst: white;
+  --kleur-kritisch: ;
+  --kleur-hoog: #cf62bf;
+  --kleur-midden: #f5666b;
+  --kleur-laag: #66d18f;
+}
+body {
+  font-family: 'Raleway';
+  padding-top: 10px;
+  padding-bottom: 50px;
+  background-color: var(--kleur-achtergrond);
+  color: var(--kleur-tekst);
+}
+img {
+  width: 210px;
+}
+h1 {
+  padding: 0 15px 0 15px;
+}
+h3 {
+  margin-top: 30px;
+}
+li {
+  margin: 20px 50px 0 0;
+}
+a {
+  color: var(--kleur-accent);
+}
+.center-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.column {
+  width: 640px;
+  padding: 0 20px 0 20px;
+}
+
+
+.small-circle {
+  display: inline-block;
+  width: 25px;
+  height:25px;
+  background-color: var(--kleur-laag);
+  border-radius: 50%;
+  margin-right: 8px; /* Afstand tussen de cirkel en tekst */
+  vertical-align: middle; /* Lijn de cirkel uit met de tekst */
+}
+.medium-circle {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: var(--kleur-midden);
+  border-radius: 50%;
+  margin-right: 8px; /* Afstand tussen de cirkel en tekst */
+  vertical-align: middle; /* Lijn de cirkel uit met de tekst */
+}
+.large-circle {
+  display: inline-block;
+  width: 55px;
+  height: 55px;
+  background-color: var(--kleur-hoog);
+  border-radius: 50%;
+  margin-right: 8px; /* Afstand tussen de cirkel en tekst */
+  vertical-align: middle; /* Lijn de cirkel uit met de tekst */
+}

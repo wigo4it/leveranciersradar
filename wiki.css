@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+body {
+    background-color: #005452;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+}
+
+#wiki-container {
+    padding: 10px;
+    color: white;
+    background-color: #005452;
+    margin: 0 auto; /* Center the container */
+}
+
+/* Media query for screens wider than 768px */
+@media (min-width: 1500px) {
+    #wiki-container {
+        width: 50%; /* Set the width to 50% for normal screens */
+    }
+}
+
+#wiki-container a {
+    color: white;
+}
+
+#wiki-container a:hover {
+    color: #ba4fab;
+}
+
+#wiki-container h1 {
+    color: white;
+}
+
+#wiki-container h2,
+#wiki-container h3,
+#wiki-container h4,
+#wiki-container h5,
+#wiki-container h6 {
+    color: #66d18f;
+}
