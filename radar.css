@@ -4,9 +4,9 @@
   --kleur-achtergrond: #43133d;
   --kleur-tekst: white;
   --kleur-kritisch: ;
-  --kleur-hoog: #cf62bf;
-  --kleur-midden: #f5666b;
-  --kleur-laag: #66d18f;
+  --kleur-proactief: #cf62bf;
+  --kleur-adaptief: #f5666b;
+  --kleur-reactief: #66d18f;
 }
 body {
   font-family: 'Raleway';
@@ -40,12 +40,11 @@ a {
   padding: 0 20px 0 20px;
 }
 
-
 .small-circle {
   display: inline-block;
   width: 25px;
   height:25px;
-  background-color: var(--kleur-laag);
+  background-color: var(--kleur-reactief);
   border-radius: 50%;
   margin-right: 8px; /* Afstand tussen de cirkel en tekst */
   vertical-align: middle; /* Lijn de cirkel uit met de tekst */
@@ -54,7 +53,7 @@ a {
   display: inline-block;
   width: 40px;
   height: 40px;
-  background-color: var(--kleur-midden);
+  background-color: var(--kleur-adaptief);
   border-radius: 50%;
   margin-right: 8px; /* Afstand tussen de cirkel en tekst */
   vertical-align: middle; /* Lijn de cirkel uit met de tekst */
@@ -63,7 +62,7 @@ a {
   display: inline-block;
   width: 55px;
   height: 55px;
-  background-color: var(--kleur-hoog);
+  background-color: var(--kleur-proactief);
   border-radius: 50%;
   margin-right: 8px; /* Afstand tussen de cirkel en tekst */
   vertical-align: middle; /* Lijn de cirkel uit met de tekst */

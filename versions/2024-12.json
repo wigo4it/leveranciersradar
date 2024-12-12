@@ -1,0 +1,275 @@
+[
+  {
+    "label": "NorthC Datacenters B.V.",
+    "objectSize": 1,
+    "quadrant": 2,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Ziggo/Vodafone Libertel B.V.",
+    "objectSize": 2,
+    "quadrant": 2,
+    "ring": 0,
+    "status": 0
+  },
+  {
+    "label": "SoftwareONE Netherlands B.V.",
+    "objectSize": 2,
+    "quadrant": 2,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Eurofiber Cloud Infra B.V (voorheen Dataplace)",
+    "objectSize": 2,
+    "quadrant": 2,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "TNG Staffing B.V.",
+    "objectSize": 3,
+    "quadrant": 2,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Circle8",
+    "objectSize": 3,
+    "quadrant": 2,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Ukomst B.V.",
+    "objectSize": 3,
+    "quadrant": 2,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "LINKIT B.V.",
+    "objectSize": 3,
+    "quadrant": 2,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Infoblox/SLTN IT Products B.V.",
+    "objectSize": 1,
+    "quadrant": 0,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Miro Netherlands B.V.",
+    "objectSize": 1,
+    "quadrant": 0,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Loyalis Schade",
+    "objectSize": 1,
+    "quadrant": 0,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Biztalk Netherlands B.V.",
+    "objectSize": 1,
+    "quadrant": 0,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Citrix Netherlands B.V.",
+    "objectSize": 2,
+    "quadrant": 0,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Exact Software Nederland BV",
+    "objectSize": 2,
+    "quadrant": 0,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "PFA Dutch Commercial Real Estate Low B.V.",
+    "objectSize": 3,
+    "quadrant": 0,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Tungsten Netherlands B.V.",
+    "objectSize": 3,
+    "quadrant": 0,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Microsoft Netherlands B.V.",
+    "objectSize": 3,
+    "quadrant": 0,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Splunk Netherlands B.V.",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Smartbear Netherlands B.V.",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Odido Netherlands B.V.",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Westvlietbewaking B.V.",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Trendmicro Netherlands B.V.",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Trustifi Netherlands B.V.",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "VIRTU SECURE WEBSERVICES B.V.",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Stichting ICTU",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "ttif & arbo B.V.",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Beercoo Schoonmaakgroep",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Freshservice Netherlands B.V.",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Ecclesia",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "SLTN IT Products B.V.",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Fullyincontrol Netherlands B.V.",
+    "objectSize": 1,
+    "quadrant": 1,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "PWC",
+    "objectSize": 2,
+    "quadrant": 1,
+    "ring": 2,
+    "status": 0
+  },
+  {
+    "label": "Secura B.V.",
+    "objectSize": 2,
+    "quadrant": 1,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Oracle Netherlands B.V.",
+    "objectSize": 2,
+    "quadrant": 1,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "AFAS Netherlands B.V.",
+    "objectSize": 1,
+    "quadrant": 3,
+    "ring": 1,
+    "status": 0
+  },
+  {
+    "label": "Oracle Netherlands B.V.",
+    "objectSize": 2,
+    "quadrant": 3,
+    "ring": 0,
+    "status": 0
+  },
+  {
+    "label": "Ignite Netherlands B.V.",
+    "objectSize": 2,
+    "quadrant": 3,
+    "ring": 0,
+    "status": 0
+  },
+  {
+    "label": "Truston Netherlands B.V.",
+    "objectSize": 2,
+    "quadrant": 3,
+    "ring": 0,
+    "status": 0
+  },
+  {
+    "label": "Microsoft Netherlands B.V.",
+    "objectSize": 3,
+    "quadrant": 3,
+    "ring": 0,
+    "status": 0
+  }
+]

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 
 body {
-    background-color: #005452;
+    background-color: #43133d;
     font-family: 'Raleway', sans-serif;
     font-size: 18px;
 }
@@ -9,7 +9,7 @@ body {
 #wiki-container {
     padding: 10px;
     color: white;
-    background-color: #005452;
+    background-color: #43133d;
     margin: 0 auto; /* Center the container */
 }
 

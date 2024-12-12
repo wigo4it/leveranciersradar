@@ -1,0 +1,16 @@
+label,quadrant,ring,circleSize,status
+Microsoft MS365,2,0,22,0
+Microsoft Azure,3,0,30,0
+Microsoft Azure,3,0,22,0
+Microsoft Azure,3,0,12,0
+Microsoft Azure,3,0,30,0
+Microsoft Azure,3,1,30,0
+Microsoft Azure,3,1,12,0
+Microsoft Azure,3,1,22,0
+Microsoft Azure,3,1,20,0
+Microsoft Azure,3,0,22,0
+Oracle BYOL,1,2,22,0
+Oracle OCI,2,0,12,0
+Truston,2,2,12,0
+SoftwareOne,2,1,30,0
+Exact,0,1,12,0
