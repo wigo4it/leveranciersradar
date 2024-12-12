@@ -400,7 +400,7 @@ function radar_visualization(config) {
               }
             }
 
-            const maxLength = 25; //maximale lengte van de tekst
+            const maxLength = 40; //maximale lengte van de tekst
             const displayText = d.id + ". " + d.label;
             return truncateText(displayText, maxLength);
           })
