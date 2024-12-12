@@ -1,17 +1,3 @@
-// The MIT License (MIT)
-
-// Copyright (c) 2017 Zalando SE
-
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-
 function radar_visualization(config) {
   console.log("Entries:", config.entries);
   const style = getComputedStyle(document.documentElement);
@@ -30,10 +16,10 @@ function radar_visualization(config) {
     reactief: style.getPropertyValue('--kleur-reactief')
   };
   config.quadrants = [
-    { name: "Knelpunt leveranciers" }, //rechtsonder
-    { name: "Routine leveranciers" }, //linksonder
-    { name: "Hefboom leveranciers" }, //linksboven
-    { name: "Strategische leveranciers" }, //rechtsboven
+    { name: "Knelpunt leveranciers" }, // rechtsonder (SE)
+    { name: "Routine leveranciers" }, // links onder (SW)
+    { name: "Hefboom leveranciers" }, // links boven (NW)
+    { name: "Strategische leveranciers" }, // rechts boven (NE)
   ];
 
   config.rings = [
@@ -45,8 +31,8 @@ function radar_visualization(config) {
   config.print_layout = true;
   config.links_in_new_tabs = false;
 
-  // custom random number generator, to make random sequence reproducible
-  // source: https://stackoverflow.com/questions/521295
+  // Custom random number generator, to make random sequence reproducible
+  // Source: https://stackoverflow.com/questions/521295
   var seed = 42;
   function random() {
     var x = Math.sin(seed++) * 10000;
@@ -61,25 +47,21 @@ function radar_visualization(config) {
     return min + (random() + random()) * 0.5 * (max - min);
   }
 
-  // radial_min / radial_max are multiples of PI
+  // Radial_min / radial_max are multiples of PI
   const quadrants = [
-    { radial_min: 0, radial_max: 0.5, factor_x: 1, factor_y: 1 }, //rechtsboven
-    { radial_min: 0.5, radial_max: 1, factor_x: -1, factor_y: 1 }, //linksboven
-    { radial_min: -1, radial_max: -0.5, factor_x: -1, factor_y: -1 }, //linksonder
-    { radial_min: -0.5, radial_max: 0, factor_x: 1, factor_y: -1 } // rechtsonder
+    { radial_min: 0, radial_max: 0.5, factor_x: 1, factor_y: 1 }, // rechtboven (NE)
+    { radial_min: 0.5, radial_max: 1, factor_x: -1, factor_y: 1 }, // linksboven (NW)
+    { radial_min: -1, radial_max: -0.5, factor_x: -1, factor_y: -1 }, // linksonder (SW)
+    { radial_min: -0.5, radial_max: 0, factor_x: 1, factor_y: -1 } // rechtsonder (SE)
   ];
 
-  const title_offset =
-    { x: -675, y: -440 };
-
-  const footer_offset =
-    { x: -675, y: -10 };
-
+  const title_offset = { x: -675, y: -440 };
+  const footer_offset = { x: -675, y: -10 };
   const legend_offset = [
-    { x: 450, y: 90 }, //rechsonder
-    { x: -675, y: 90 }, //linksonder
-    { x: -675, y: -310 }, //linksboven
-    { x: 450, y: -310 } //rechtsboven
+    { x: 450, y: 90 }, // rechtsonder
+    { x: -675, y: 90 }, // linksonder
+    { x: -675, y: -310 }, // linksboven
+    { x: 450, y: -310 } // rechtsboven
   ];
 
   function polar(cartesian) {
@@ -118,16 +100,17 @@ function radar_visualization(config) {
     }
   }
 
-  function segment(quadrant, ring) {
-    const quadrantMargin = 0.5 * Math.PI; // Marge in radialen voor kwadrantgrenzen
+  function segment(quadrant, ring, radius) { // Voeg 'radius' toe als parameter
+    const quadrantMargin = 0.05 * Math.PI; // Verminder de marge voor betere positionering
+    const padding = radius; // Dynamische padding op basis van de cirkelstraal
 
     var polar_min = {
       t: quadrants[quadrant].radial_min * Math.PI + quadrantMargin, // Voeg kwadrantmarge toe
-      r: ring === 0 ? 20 : config.rings[ring - 1].radius // Voeg ringmarge toe
+      r: ring === 0 ? padding : config.rings[ring - 1].radius + padding // Voeg ringmarge plus padding toe
     };
     var polar_max = {
       t: quadrants[quadrant].radial_max * Math.PI - quadrantMargin, // Trek kwadrantmarge af
-      r: config.rings[ring].radius // Trek ringmarge af
+      r: config.rings[ring].radius - padding // Trek ringmarge en padding af
     };
 
     var cartesian_min = {
@@ -148,6 +131,12 @@ function radar_visualization(config) {
           polar_max.r
         );
         d.x = cartesian(p).x; // Pas de x-positie aan
+
+        var r = d.objectSize * 10; // Straal van de cirkel
+        if (Math.abs(d.x) < r) {
+          d.x = r * Math.sign(d.x || 1); // Zorg ervoor dat |x| >= r
+        }
+
         return d.x;
       },
       clipy: function (d) {
@@ -158,6 +147,12 @@ function radar_visualization(config) {
           polar_max.r
         );
         d.y = cartesian(p).y; // Pas de y-positie aan
+
+        var r = d.objectSize * 10; // Straal van de cirkel
+        if (Math.abs(d.y) < r) {
+          d.y = r * Math.sign(d.y || 1); // Zorg ervoor dat |y| >= r
+        }
+
         return d.y;
       },
       random: function () {
@@ -172,20 +167,20 @@ function radar_visualization(config) {
     };
   }
 
-
-  // position each entry randomly in its segment
+  // Positioneer elke entry willekeurig in zijn segment
   for (var i = 0; i < config.entries.length; i++) {
     var entry = config.entries[i];
-    entry.segment = segment(entry.quadrant, entry.ring);
+    var radius = entry.objectSize * 10; // Bepaal de straal van de cirkel
+    entry.segment = segment(entry.quadrant, entry.ring, radius); // Geef de straal door
     var point = entry.segment.random();
     entry.x = point.x;
     entry.y = point.y;
-    entry.color = entry.active || config.print_layout ?
+    entry.color = (entry.active || config.print_layout) ?
       config.rings[entry.ring].color : config.colors.inactive;
     entry.textColor = config.rings[entry.ring].textColor;
   }
 
-  // partition entries according to segments
+  // Partitioneer entries volgens segmenten
   var segmented = new Array(4);
   for (var quadrant = 0; quadrant < 4; quadrant++) {
     segmented[quadrant] = new Array(config.rings.length);
@@ -198,9 +193,9 @@ function radar_visualization(config) {
     segmented[entry.quadrant][entry.ring].push(entry);
   }
 
-  // assign unique sequential id to each entry
+  // Ken unieke sequentiële ID toe aan elke entry
   var id = 1;
-  for (var quadrant of [2, 3, 1, 0]) {
+  for (var quadrant of [2, 3, 1, 0]) { // volgorde: SW, SE, NW, NE
     for (var ring = 0; ring < config.rings.length; ring++) {
       var entries = segmented[quadrant][ring];
       for (var i = 0; i < entries.length; i++) {
@@ -213,7 +208,6 @@ function radar_visualization(config) {
     return "translate(" + x + "," + y + ")";
   }
 
-
   var svg = d3.select("svg#" + config.svg_id)
     .style("background-color", config.colors.background)
     //.style("top", "0") // Naar de bovenkant uitlijnen
@@ -225,7 +219,7 @@ function radar_visualization(config) {
 
   var grid = radar.append("g");
 
-  // draw grid lines
+  // Teken grid lijnen
   grid.append("line")
     .attr("x1", 0).attr("y1", -400)
     .attr("x2", 0).attr("y2", 400)
@@ -237,8 +231,7 @@ function radar_visualization(config) {
     .style("stroke", config.colors.grid)
     .style("stroke-width", 2);
 
-  // background color. Usage `.attr("filter", "url(#solid)")`
-  // SOURCE: https://stackoverflow.com/a/31013492/2609980
+  // Achtergrondkleur en filter
   var defs = grid.append("defs");
   var filter = defs.append("filter")
     .attr("x", 0)
@@ -251,7 +244,7 @@ function radar_visualization(config) {
   filter.append("feComposite")
     .attr("in", "SourceGraphic");
 
-  // draw rings
+  // Teken ringen
   for (var i = 0; i < config.rings.length; i++) {
     grid.append("circle")
       .attr("cx", 0)
@@ -266,7 +259,7 @@ function radar_visualization(config) {
         .attr("y", -config.rings[i].radius + 32)
         .attr("text-anchor", "middle")
         .style("fill", config.rings[i].color)
-        .style("opacity", 0.75) //doorzichtigheid van de tekst in de ring
+        .style("opacity", 0.75) // doorzichtigheid van de tekst in de ring
         .style("text-transform", "uppercase")
         .style("font-family", config.font_family)
         .style("font-size", "20px")
@@ -299,12 +292,11 @@ function radar_visualization(config) {
     );
   }
 
-  // draw title and legend (only in print layout)
+  // Teken titel en legenda (alleen in print_layout)
   if (config.print_layout) {
 
-    // title
-    radar
-      .append("text")
+    // Titel
+    radar.append("text")
       .attr("transform", translate(title_offset.x, title_offset.y + 20))
       .text(config.title || "")
       .style("font-family", config.font_family)
@@ -349,8 +341,7 @@ function radar_visualization(config) {
           .style("fill", config.colors.text);
       });
 
-
-    // legend
+    // Legenda
     var legend = radar.append("g");
     for (var quadrant = 0; quadrant < 4; quadrant++) {
       legend.append("text")
@@ -382,7 +373,7 @@ function radar_visualization(config) {
           .attr("target", function (d, i) {
             return (d.link && config.links_in_new_tabs) ? "_blank" : null;
           })
-          // add application insights link clicked event
+          // Add application insights link clicked event
           .attr("onclick", function (d, i) {
             return "if (appInsights) { appInsights.trackEvent('" + d.label + " clicked'); }";
           })
@@ -400,7 +391,7 @@ function radar_visualization(config) {
               }
             }
 
-            const maxLength = 40; //maximale lengte van de tekst
+            const maxLength = 40; // maximale lengte van de tekst
             const displayText = d.id + ". " + d.label;
             return truncateText(displayText, maxLength);
           })
@@ -413,11 +404,11 @@ function radar_visualization(config) {
     }
   }
 
-  // layer for entries
+  // Laag voor entries
   var rink = radar.append("g")
     .attr("id", "rink");
 
-  // rollover bubble (on top of everything else)
+  // Rollover bubble (bovenop alles)
   var bubble = radar.append("g")
     .attr("id", "bubble")
     .attr("x", 0)
@@ -441,7 +432,7 @@ function radar_visualization(config) {
   function showBubble(d) {
     if (d.active || config.print_layout) {
       var tooltip = d3.select("#bubble text")
-        .text(d.label); //hoover text
+        .text(d.label); // hoover text
       var bbox = tooltip.node().getBBox();
       d3.select("#bubble")
         .attr("transform", translate(d.x - bbox.width / 2, d.y - 16))
@@ -474,21 +465,21 @@ function radar_visualization(config) {
     legendItem.setAttribute("fill", config.colors.text);
   }
 
-  // draw blips on radar
+  // Teken blips op de radar
   var blips = rink.selectAll(".blip")
     .data(config.entries)
     .enter()
     .append("g")
     .attr("class", "blip")
-    .attr("transform", function (d, i) { return legend_transform(d.quadrant, d.ring, i); })
+    .attr("transform", function (d, i) { return translate(d.x, d.y); }) // Gebruik de geclipte x en y
     .on("mouseover", function (d) { showBubble(d); highlightLegendItem(d); })
     .on("mouseout", function (d) { hideBubble(d); unhighlightLegendItem(d); });
 
-  // configure each blip
+  // Configureer elke blip
   blips.each(function (d) {
     var blip = d3.select(this);
 
-    // blip link
+    // Blip link
     if (d.active && d.hasOwnProperty("link") && d.link) {
       blip = blip.append("a")
         .attr("xlink:href", d.link);
@@ -498,11 +489,11 @@ function radar_visualization(config) {
       }
     }
 
-    // blip shape
+    // Blip vorm
     const minSize = 1.3; // Definieer de minimale grootte
     const objectSize = Math.max(d.objectSize, minSize);
     if (d.status == 1) {
-      blip.append("rect") //nieuw (vierkant)
+      blip.append("rect") // nieuw (vierkant)
         .attr("x", -objectSize * 9) // Gecentreerd in x-richting
         .attr("y", -objectSize * 9) // Gecentreerd in y-richting
         .attr("width", objectSize * 18)
@@ -519,10 +510,10 @@ function radar_visualization(config) {
         .attr("r", objectSize * 10)
         .attr("fill", d.color);
     }
-    // blip text
+    // Blip tekst
     let yValue;
     if (d.status == 2) {
-      yValue = 8; // Verplaats text 10px omlaag voor driehoek
+      yValue = 8; // Verplaats tekst 10px omlaag voor driehoek
     } else {
       yValue = 4; // Standaard verticale centrering
     }
@@ -540,7 +531,7 @@ function radar_visualization(config) {
     }
   });
 
-  // make sure that blips stay inside their segment
+  // Zorg ervoor dat blips binnen hun segment blijven
   function ticked() {
     blips.attr("transform", function (d) {
       const x = d.segment.clipx(d);
@@ -549,15 +540,23 @@ function radar_visualization(config) {
     });
   }
 
-  // distribute blips, while avoiding collisions
+  // Verspreid blips, terwijl botsingen worden vermeden
   d3.forceSimulation()
     .nodes(config.entries)
     .force(
       "collision",
       d3.forceCollide()
         .radius(function (d) {
-          return d.objectSize * 10 + 2; // Straal van de cirkel + 2px marge
+          return d.objectSize * 10 + 5; // Straal van de cirkel + kleine marge
         })
+    )
+    .force(
+      "x",
+      d3.forceX(d => d.x).strength(0.1) // Force naar de x positie met lagere sterkte
+    )
+    .force(
+      "y",
+      d3.forceY(d => d.y).strength(0.1) // Force naar de y positie met lagere sterkte
     )
     .on("tick", ticked);
 }
