@@ -56,7 +56,7 @@ function radar_visualization(config) {
   ];
 
   const title_offset = { x: -675, y: -440 };
-  const footer_offset = { x: -675, y: -10 };
+  const footer_offset = { x: -80, y: 450 };
   const legend_offset = [
     { x: 450, y: 90 }, // rechtsonder
     { x: -675, y: 90 }, // linksonder

@@ -17,7 +17,7 @@
     "label": "SoftwareONE Netherlands B.V.",
     "objectSize": 2,
     "quadrant": 2,
-    "ring": 1,
+    "ring": 0,
     "status": 0
   },
   {
@@ -112,13 +112,6 @@
     "status": 0
   },
   {
-    "label": "Microsoft Netherlands B.V.",
-    "objectSize": 3,
-    "quadrant": 0,
-    "ring": 1,
-    "status": 0
-  },
-  {
     "label": "Splunk Netherlands B.V.",
     "objectSize": 1,
     "quadrant": 1,
@@ -184,7 +177,7 @@
   {
     "label": "Beercoo Schoonmaakgroep",
     "objectSize": 1,
-    "quadrant": 1,
+    "quadrant": 2,
     "ring": 1,
     "status": 0
   },
@@ -217,7 +210,7 @@
     "status": 0
   },
   {
-    "label": "PWC",
+    "label": "PWC (The Audit Generation)",
     "objectSize": 2,
     "quadrant": 1,
     "ring": 2,
@@ -225,13 +218,6 @@
   },
   {
     "label": "Secura B.V.",
-    "objectSize": 2,
-    "quadrant": 1,
-    "ring": 1,
-    "status": 0
-  },
-  {
-    "label": "Oracle Netherlands B.V.",
     "objectSize": 2,
     "quadrant": 1,
     "ring": 1,
